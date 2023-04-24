@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 23:14:57 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/04/25 00:07:46 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/04/25 00:37:25 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ t_stack	*ft_int_lstnew(int value)
 {
 	t_stack	*node;
 
-	node = (t_stack *)ft_calloc(1, sizeof(*node));
+	node = (t_stack *)safe_calloc(1, sizeof(*node));
 	if (!node)
-		return (0);
+		error_exit("Memory allocation failed");
 	node->value = value;
 	node->next = 0;
 	return (node);

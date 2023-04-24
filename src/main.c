@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:50:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/04/25 00:10:48 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/04/25 01:15:01 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_atoi_protect_maxint(char *str)
 
 t_stack	*initialize_stack(int argc, char **argv)
 {
-	t_stack	*stack;
+	t_stack	*stack = NULL;
 	int		stack_length;
 	int		i;
 	int		n;
@@ -55,6 +55,8 @@ t_stack	*initialize_stack(int argc, char **argv)
 				if (!(argv[stack_length][0] == '-'
 					&& ft_isdigit(argv[stack_length][i])))
 					error_exit("Value isn't a number");
+		if (argv[stack_length][0] == 0)
+			error_exit("Empty value");
 		n = ft_atoi_protect_maxint(argv[stack_length]);
 		check_duplicates(stack, n);
 		if (!stack)
@@ -73,10 +75,10 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		stack_a = initialize_stack(argc, argv);
-		ft_printf("List Length = %i\n", ft_int_lstsize(stack_a));
+		// ft_printf("List Length = %i\n", ft_int_lstsize(stack_a));
 		while (stack_a)
 		{
-			ft_printf("Node: %i\n", stack_a->value);
+			// ft_printf("Node: %p\n", stack_a->next);
 			stack_a = stack_a->next;
 		}
 		return (EXIT_SUCCESS);

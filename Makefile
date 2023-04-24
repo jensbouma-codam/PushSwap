@@ -6,7 +6,7 @@
 #    By: jbouma <jbouma@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 14:09:40 by jbouma        #+#    #+#                  #
-#    Updated: 2023/04/24 23:30:12 by jensbouma     ########   odam.nl          #
+#    Updated: 2023/04/25 00:33:28 by jensbouma     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ TARGET		= bin/$<
 # Sources
 SRCDIR		= 	src
 FILES		= 	main.c			\
-				error_handler.c	\
+				error.c			\
+				smarttools.c	\
 				swap.c			\
 				list.c			\
 

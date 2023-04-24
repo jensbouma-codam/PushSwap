@@ -6,14 +6,14 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:52:15 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/04/25 00:09:07 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/04/25 01:09:16 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define DEBUG 1
+# define DEBUG 0
 
 # include <stdbool.h>
 # include <limits.h>
@@ -31,6 +31,9 @@ typedef struct s_stack
 
 // error_handler.c
 void	error_exit(char *msg);
+
+// newtools.c
+void	*safe_calloc(size_t count, size_t size);
 
 // list.c
 t_stack	*ft_int_lstnew(int value);
