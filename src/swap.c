@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:57:49 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/04/24 19:01:44 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/04/28 17:58:42 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,27 @@ int	ss(void)
 	return (true);
 }
 
+/**
+ * @brief Take the first element at the top of b and put it at the top of a.
+ * 
+ * @param a 
+ * @param b 
+ * @return int 
+ */
+int	pa(t_stack *a, t_stack *b)
+{
+	int tmp;
 
+	write(1, "pa\n", 3);
+	if (!b->value)
+		return (false);
+	tmp = b->value;
+	b-> value = a->value;
+	a->value = tmp;
+	ft_printf("Pushing!\n");
+	return (true);
 
-// pa (push a): Take the first element at the top of b and put it at the top of a.
-// Do nothing if b is empty.
+}
 
 // pb (push b): Take the first element at the top of a and put it at the top of b.
 
