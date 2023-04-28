@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:50:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/04/25 01:15:01 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/04/28 17:52:26 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,31 @@ t_stack	*initialize_stack(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
+	t_stack	*stack_b;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc > 1)
 	{
 		stack_a = initialize_stack(argc, argv);
-		// ft_printf("List Length = %i\n", ft_int_lstsize(stack_a));
-		while (stack_a)
+		ft_printf("Stack A\t\t StackB\n%i\t\t%i\n",
+			ft_int_lstsize(stack_a), ft_int_lstsize(stack_b));
+		while (stack_a || stack_b)
 		{
-			// ft_printf("Node: %p\n", stack_a->next);
-			stack_a = stack_a->next;
+			if (stack_a)
+			{
+				ft_printf("%i\t\t", stack_a->value);
+				stack_a = stack_a->next;
+			}
+			else
+				ft_printf("----\t\t");
+			if (stack_b)
+			{
+				ft_printf("%i\n", stack_b->value);
+				stack_b = stack_b->next;
+			}
+			else
+				ft_printf("----\n");
 		}
 		return (EXIT_SUCCESS);
 	}
