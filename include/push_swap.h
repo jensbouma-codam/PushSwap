@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:52:15 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/02 00:14:21 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/08 16:40:12 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef struct s_stack
 {
 	int				value;
+	struct s_stack	*prev;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -42,28 +43,39 @@ typedef struct s_stacks
 
 // error_handler.c
 void	error_exit(char *msg);
-void	debug(t_stack *stack_a, t_stack *stack_b);
+void	debug(t_stacks *s);
 
-// newtools.c
+// input.c
+// t_stack	*initialize_stack(int argc, char **argv);
+t_stack	*initialize_stack(int argc, char **argv);
+// t_stack	*initialize_stack(t_stack stack, int argc, char **argv);
+
+// memory.c
 void	*safe_calloc(size_t count, size_t size);
+void	clear_stacks(t_stacks *s);
 
-// // list.c
-// t_stack	*ft_int_lstnew(int value);
-// t_stack	*ft_int_lstlast(t_stack *lst);
-// void	ft_int_lstadd_back(t_stack *lst, t_stack *add);
-// t_list	*ft_int_lstadd_front(t_list *lst, t_list *add);
-// int		ft_int_lstsize(t_stack *lst);
-// void	check_duplicates(t_stack *lst, int n);
+// stack.c
+int		stack_size(t_stack *lst);
+t_stack	*stack_last(t_stack *stack);
+t_stack	*add(t_stack *stack, int value);
+t_stack	*addtop(t_stack *stack, int value);
 
+// swap.c
+int		swap_a(t_stacks *s);
+int		swap_b(t_stacks *s);
+int		swap_both(t_stacks *s);
 
-// // void	swap(int x, int y);
+// push.c
+int		push_ba(t_stacks *s);
+int		push_ab(t_stacks *s);
 
-// // swap.c
-// int		sa(t_stack *stack);
-// int		sb(t_stack *stack);
-// int		ss(t_stack *a, t_stack *b);
+// rotate.c
+int		rotate_a(t_stacks *s);
+int		rotate_b(t_stacks *s);
+int		rotate_both(t_stacks *s);
 
-// // push.c
-// int		pa(t_stack *a, t_stack *b);
-// t_stack	*pb(t_stack *a, t_stack *b);
+// rrotate.c
+int		rrotate_a(t_stacks *s);
+int		rrotate_b(t_stacks *s);
+int		rrotate_both(t_stacks *s);
 #endif

@@ -6,28 +6,28 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:57:49 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/04/28 18:54:24 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/08 16:05:37 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /**
- * @briefSwap the first 2 elements at the top of stack a.
+ * @brief Swap the first 2 elements at the top of stack a.
  * Do nothing if there is only one or no elements.
  * 
  * @return int 
  */
-int	sa(t_stack *stack)
+int	swap_a(t_stacks *s)
 {
 	int	tmp;
 
 	write(1, "sa\n", 3);
-	if (!stack->next)
+	if (!s->a->next)
 		return (false);
-	tmp = stack->next->value;
-	stack->next->value = stack->value;
-	stack->value = tmp;
+	tmp = s->a->next->value;
+	s->a->next->value = s->a->value;
+	s->a->value = tmp;
 	return (true);
 }
 
@@ -37,16 +37,16 @@ int	sa(t_stack *stack)
  * 
  * @return int 
  */
-int	sb(t_stack *stack)
+int	swap_b(t_stacks *s)
 {
 	int	tmp;
 
 	write(1, "sb\n", 3);
-	if (!stack->next)
+	if (!s->b->next)
 		return (false);
-	tmp = stack->next->value;
-	stack->next->value = stack->value;
-	stack->value = tmp;
+	tmp = s->b->next->value;
+	s->b->next->value = s->b->value;
+	s->b->value = tmp;
 	return (true);
 }
 
@@ -55,34 +55,20 @@ int	sb(t_stack *stack)
  * 
  * @return int 
  */
-int	ss(t_stack *a, t_stack *b)
+int	swap_both(t_stacks *s)
 {
 	int	tmp;
 
 	write(1, "ss\n", 3);
-	if (!a->next)
+	if (!s->a->next)
 		return (false);
-	tmp = a->next->value;
-	a->next->value = a->value;
-	a->value = tmp;
-	if (!b->next)
+	tmp = s->a->next->value;
+	s->a->next->value = s->a->value;
+	s->a->value = tmp;
+	if (!s->b->next)
 		return (false);
-	tmp = b->next->value;
-	b->next->value = b->value;
-	b->value = tmp;
+	tmp = s->b->next->value;
+	s->b->next->value = s->b->value;
+	s->b->value = tmp;
 	return (true);
 }
-
-// 
-// ra (rotate a): Shift up all elements of stack a by 1. 
-// The first element becomes the last one.
-
-// rb (rotate b): Shift up all elements of stack b by 1. The first element becomes the last one.
-
-// rr : ra and rb at the same time.
-
-// rra (reverse rotate a): Shift down all elements of stack a by 1.
-// The last element becomes the first one.
-
-// rrb (reverse rotate b): Shift down all elements of stack b by 1. The last element becomes the first one.
-// rrr : rra and rrb at the same time.

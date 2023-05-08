@@ -6,7 +6,7 @@
 #    By: jbouma <jbouma@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 14:09:40 by jbouma        #+#    #+#                  #
-#    Updated: 2023/05/01 21:56:25 by jensbouma     ########   odam.nl          #
+#    Updated: 2023/05/08 18:01:23 by jbouma        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME		=	push_swap
 
 # Compiler Settings
 CC 			:= gcc
-CFLAGS 		:=
-# -Wall -Wextra -Werror
+CFLAGS 		:= -g -Wall -Wextra -Werror
+# -fsanitize=address
 # CFLAGS		:= -Wall -Wextra -Werror -g -fsanitize=address
 
 # Headers
@@ -28,12 +28,16 @@ TARGET		= bin/$<
 
 # Sources
 SRCDIR		= 	src
-FILES		= 	main.c			\
-				error.c			\
-				smarttools.c	\
-				list.c			\
-				# swap.c			\
-				push.c			\
+FILES		= 	main.c		\
+				input.c		\
+				stack.c		\
+				error.c		\
+				memory.c	\
+				swap.c		\
+				push.c		\
+				rotate.c	\
+				rrotate.c	\
+				# list.c		\
 
 SOURCES		=	${addprefix $(SRCDIR)/, $(FILES)}
 
@@ -82,16 +86,16 @@ $(BUILDDIR)%.o:%.c
 	@printf "${RESET}"
 
 $(LIBS):
+	@mkdir -p $(BUILDDIR)
 	@printf "Submodule \t$@ \033[0K\r\n"
 	@git submodule update --init
 	@norminette -R CheckForbiddenSourceHeader $(LIBDIR)/$@/include $(LIBDIR)/$@/src > /dev/null && $(P_OK) || { $(P_KO); }
 	@make -C $(LIBDIR)/$@
 	@cp -p $(LIBDIR)/$@/$@.a $(BUILDDIR)
 
-$(NAME): $(OBJECTS) $(LIBS)
-	@make norminette 2> /dev/null && $(P_OK) || { $(P_KO);}
+$(NAME): $(LIBS) $(OBJECTS)
+	@make norm 2> /dev/null && $(P_OK) || { $(P_KO);}
 	
-
 clean:
 	@rm -rf build
 	@rm -rf $(LIBDIR)/*/*.a
@@ -103,6 +107,6 @@ fclean: clean
 re: fclean all
 
 norm: $(SOURCES)
-	@norminette -R CheckForbiddenSourceHeader $^ includes > /dev/null && exit 0 || exit 1
+	@norminette -R CheckForbiddenSourceHeader $^ include > /dev/null && exit 0 || exit 1
 
 .PHONY: all clean fclean re

@@ -6,61 +6,62 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/28 18:12:50 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/01 21:21:52 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/08 18:53:04 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 /**
  * @brief Take the first element at the top of b and put it at the top of a.
  * Do nothing if b is empty.
  * 
- * @param a 
- * @param b 
+ * @param t_stacks s 
  * @return int 
  */
-int	pa(t_stack *a, t_stack *b)
+int	push_ba(t_stacks *s)
 {
-	int	tmp;
+	t_stack	*next;
 
 	write(1, "pa\n", 3);
-	if (!b)
+	if (!s->b)
 		return (false);
-	tmp = b->value;
-	b->value = a->value;
-	a->value = tmp;
+	if (!s->a)
+		next = NULL;
+	else
+		next = s->a;
+	s->b->prev = NULL;
+	s->a = s->b;
+	s->b = s->b->next;
+	s->a->next = next;
+	s->last_a = stack_last(s->a);
 	return (true);
 }
 
-t_stack	*ft_int_delone(t_stack *lst)
-{
-	free(lst->value);
-	lst = lst->next;
-	lst->value = lst->next->value;
-	return (lst);
-}
-
 /**
- * 
  * @brief Take the first element at the top of a and put it at the top of b.
  * Do nothing if a is empty.
  * 
- * @param a 
- * @param b 
+ * @param t_stacks s  
  * @return int 
  */
-t_stack	*pb(t_stack *a, t_stack *b)
+int	push_ab(t_stacks *s)
 {
-	write(1, "pb\n", 3);
+	t_stack	*next;
 
-	if (!a)
+	write(1, "pb\n", 3);
+	if (!s->a)
 		return (false);
-	if (b)
-	{
-		// a = ft_int_delone(a);
-		return (ft_int_lstadd_front(b, ft_int_lstnew(a->value)));
-	}
-	return (ft_int_lstnew(a->value));
+	if (!s->b)
+		next = NULL;
+	else
+		next = s->b;
+	s->b = s->a;
+	s->a = s->a->next;
+	s->a->prev = NULL;
+	s->b->next = next;
+	if (s->b->next)
+		s->b->next->prev = s->b;
+	s->last_b = stack_last(s->b);
+	return (true);
 }
