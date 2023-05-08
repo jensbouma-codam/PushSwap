@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 16:05:45 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/08 16:20:13 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/08 19:24:58 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	rotate_a(t_stacks *s)
 		return (false);
 	s->last_a->next = s->a;
 	s->a = s->a->next;
+	s->a->prev = NULL;
+	s->a->next->prev = s->a;
 	s->last_a->next->next = NULL;
 	s->last_a = s->last_a->next;
 	return (true);
@@ -47,6 +49,8 @@ int	rotate_b(t_stacks *s)
 		return (false);
 	s->last_b->next = s->b;
 	s->b = s->b->next;
+	s->b->prev = NULL;
+	s->b->next->prev = s->b;
 	s->last_b->next->next = NULL;
 	s->last_b = s->last_b->next;
 	return (true);
@@ -65,12 +69,14 @@ int	rotate_both(t_stacks *s)
 		return (false);
 	s->last_a->next = s->a;
 	s->a = s->a->next;
+	s->a->prev = NULL;
 	s->last_a->next->next = NULL;
 	s->last_a = s->last_a->next;
 	if (!s->b->next)
 		return (false);
 	s->last_b->next = s->b;
 	s->b = s->b->next;
+	s->b->prev = NULL;
 	s->last_b->next->next = NULL;
 	s->last_b = s->last_b->next;
 	return (true);

@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:50:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/08 18:53:53 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/08 19:27:04 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ int	main(int argc, char **argv)
 		push_ab(s);
 		push_ab(s);
 		push_ab(s);
+		push_ba(s);
+		push_ba(s);
+		push_ba(s);
+		// push_ab(s);
+		// rotate_a(s);
+		// rotate_a(s);
+		// rotate_a(s);
 		// rotate_a(s);
 		// rotate_b(s);
 		// rotate_both(s);

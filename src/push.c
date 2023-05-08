@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/28 18:12:50 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/08 18:53:04 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/08 19:17:52 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,13 @@ int	push_ba(t_stacks *s)
 		next = NULL;
 	else
 		next = s->a;
-	s->b->prev = NULL;
 	s->a = s->b;
 	s->b = s->b->next;
+	if (s->b)
+		s->b->prev = NULL;
 	s->a->next = next;
+	if (s->a->next)
+		s->a->next->prev = s->a;
 	s->last_a = stack_last(s->a);
 	return (true);
 }
@@ -58,7 +61,8 @@ int	push_ab(t_stacks *s)
 		next = s->b;
 	s->b = s->a;
 	s->a = s->a->next;
-	s->a->prev = NULL;
+	if (s->a)
+		s->a->prev = NULL;
 	s->b->next = next;
 	if (s->b->next)
 		s->b->next->prev = s->b;
