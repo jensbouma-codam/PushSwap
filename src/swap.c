@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:57:49 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/04/28 17:58:42 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/04/28 18:54:24 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,16 @@
  * 
  * @return int 
  */
-int	sa(void)
+int	sa(t_stack *stack)
 {
+	int	tmp;
+
 	write(1, "sa\n", 3);
+	if (!stack->next)
+		return (false);
+	tmp = stack->next->value;
+	stack->next->value = stack->value;
+	stack->value = tmp;
 	return (true);
 }
 
@@ -30,9 +37,16 @@ int	sa(void)
  * 
  * @return int 
  */
-int	sb(void)
+int	sb(t_stack *stack)
 {
+	int	tmp;
+
 	write(1, "sb\n", 3);
+	if (!stack->next)
+		return (false);
+	tmp = stack->next->value;
+	stack->next->value = stack->value;
+	stack->value = tmp;
 	return (true);
 }
 
@@ -41,42 +55,34 @@ int	sb(void)
  * 
  * @return int 
  */
-int	ss(void)
+int	ss(t_stack *a, t_stack *b)
 {
+	int	tmp;
+
 	write(1, "ss\n", 3);
-	return (true);
-}
-
-/**
- * @brief Take the first element at the top of b and put it at the top of a.
- * 
- * @param a 
- * @param b 
- * @return int 
- */
-int	pa(t_stack *a, t_stack *b)
-{
-	int tmp;
-
-	write(1, "pa\n", 3);
-	if (!b->value)
+	if (!a->next)
 		return (false);
-	tmp = b->value;
-	b-> value = a->value;
+	tmp = a->next->value;
+	a->next->value = a->value;
 	a->value = tmp;
-	ft_printf("Pushing!\n");
+	if (!b->next)
+		return (false);
+	tmp = b->next->value;
+	b->next->value = b->value;
+	b->value = tmp;
 	return (true);
-
 }
 
-// pb (push b): Take the first element at the top of a and put it at the top of b.
-
-// Do nothing if a is empty.
-// ra (rotate a): Shift up all elements of stack a by 1.
+// 
+// ra (rotate a): Shift up all elements of stack a by 1. 
 // The first element becomes the last one.
+
 // rb (rotate b): Shift up all elements of stack b by 1. The first element becomes the last one.
+
 // rr : ra and rb at the same time.
+
 // rra (reverse rotate a): Shift down all elements of stack a by 1.
 // The last element becomes the first one.
+
 // rrb (reverse rotate b): Shift down all elements of stack b by 1. The last element becomes the first one.
 // rrr : rra and rrb at the same time.

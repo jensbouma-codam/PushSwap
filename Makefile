@@ -6,7 +6,7 @@
 #    By: jbouma <jbouma@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 14:09:40 by jbouma        #+#    #+#                  #
-#    Updated: 2023/04/25 00:33:28 by jensbouma     ########   odam.nl          #
+#    Updated: 2023/05/01 21:56:25 by jensbouma     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME		=	push_swap
 
 # Compiler Settings
 CC 			:= gcc
-CFLAGS 		:= -Wall -Wextra -Werror
+CFLAGS 		:=
+# -Wall -Wextra -Werror
 # CFLAGS		:= -Wall -Wextra -Werror -g -fsanitize=address
 
 # Headers
@@ -30,8 +31,9 @@ SRCDIR		= 	src
 FILES		= 	main.c			\
 				error.c			\
 				smarttools.c	\
-				swap.c			\
 				list.c			\
+				# swap.c			\
+				push.c			\
 
 SOURCES		=	${addprefix $(SRCDIR)/, $(FILES)}
 
@@ -67,7 +69,6 @@ P_NL			= printf " \n"
 
 # Rules
 all: $(NAME)
-	@make norm 2> /dev/null && $(P_OK) || { $(P_KO);}
 	@mkdir -p ./bin
 	@$(CC) $(CFLAGS) $(HEADERS) $(INC) $(OBJECTS) $(LIBARIES_AFILES) -o $(TARGET)
 	@printf "Executable \t$< \033[0K\n"
@@ -88,6 +89,7 @@ $(LIBS):
 	@cp -p $(LIBDIR)/$@/$@.a $(BUILDDIR)
 
 $(NAME): $(OBJECTS) $(LIBS)
+	@make norminette 2> /dev/null && $(P_OK) || { $(P_KO);}
 	
 
 clean:
