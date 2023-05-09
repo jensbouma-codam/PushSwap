@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 16:05:45 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/09 09:10:27 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 10:43:59 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 int	rotate_a(t_stacks *s)
 {
 	write(1, "ra\n", 3);
-	if (!s->a->next)
+	if (!s->a || !s->a->next)
 		return (false);
 	s->last_a->next = s->a;
 	s->last_a->next->prev = s->last_a;
@@ -46,7 +46,7 @@ int	rotate_a(t_stacks *s)
 int	rotate_b(t_stacks *s)
 {
 	write(1, "rb\n", 3);
-	if (!s->b->next)
+	if (!s->b || !s->b->next)
 		return (false);
 	s->last_b->next = s->b;
 	s->last_b->next->prev = s->last_b;

@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:14:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 08:59:30 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 10:28:40 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,14 @@ void	debug(t_stacks *s)
 	ft_printf("\nA Len: %i\n\n", s->size_a);
 
 	print_stack(s->a);
-
+	if (s->last_a)
+		ft_printf("last A: %i %p\n", s->last_a->value, s->last_a);
+	
 	ft_printf("\nB Len: %i\n\n", s->size_b);
 
 	print_stack(s->b);
+	if (s->last_b)
+		ft_printf("last B: %i %p\n", s->last_b->value, s->last_b);
 	
 	// ta = s->a;
 	// tb = s->b;

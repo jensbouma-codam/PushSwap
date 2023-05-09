@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 16:05:45 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/09 09:15:10 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 10:46:06 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static t_stack	*reverse_rotate(t_stack *stack, t_stack *last)
  */
 int	rrotate_a(t_stacks *s)
 {
-	if (!s->a)
-		return (false);
 	write(1, "rra\n", 4);
+	if (!s->a || !s->a->next)
+		return (false);
 	s->a = reverse_rotate(s->a, s->last_a);
 	s->last_a = stack_last(s->a);
 	s->size_a = stack_size(s->a);
@@ -55,9 +55,9 @@ int	rrotate_a(t_stacks *s)
  */
 int	rrotate_b(t_stacks *s)
 {
-	if (!s->b)
-		return (false);
 	write(1, "rrb\n", 4);
+	if (!s->b || !s->b->next)
+		return (false);
 	s->b = reverse_rotate(s->b, s->last_b);
 	s->last_b = stack_last(s->b);
 	s->size_b = stack_size(s->b);
@@ -73,12 +73,12 @@ int	rrotate_b(t_stacks *s)
 int	rrotate_both(t_stacks *s)
 {
 	write(1, "rrr\n", 4);
-	if (!s->a)
+	if (!s->a || !s->a->next)
 		return (false);
 	s->a = reverse_rotate(s->a, s->last_a);
 	s->last_a = stack_last(s->a);
 	s->size_a = stack_size(s->a);
-	if (!s->b)
+	if (!s->b || !s->b->next)
 		return (false);
 	s->b = reverse_rotate(s->b, s->last_b);
 	s->last_b = stack_last(s->b);

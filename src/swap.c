@@ -6,11 +6,25 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:57:49 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 09:03:16 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 10:46:19 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	swap(t_stack **stack, t_stack **last)
+{
+	t_stack	*next;
+
+	if ((*last) == (*stack)->next)
+		(*last) = (*stack);
+	next = (*stack)->next;
+	(*stack)->next = next->next;
+	next->next = *stack;
+	next->next->prev = next;
+	(*stack) = next;
+	(*stack)->prev = NULL;
+}
 
 /**
  * @brief Swap the first 2 elements at the top of stack a.
@@ -20,16 +34,13 @@
  */
 int	swap_a(t_stacks *s)
 {
-	int	tmp;
-
 	write(1, "sa\n", 3);
 	if (!s->a || !s->a->next)
 		return (false);
-	tmp = s->a->next->value;
-	s->a->next->value = s->a->value;
-	s->a->value = tmp;
+	swap(&s->a, &s->last_a);
 	return (true);
 }
+
 
 /**
  * @brief Swap the first 2 elements at the top of stack b.
@@ -39,14 +50,10 @@ int	swap_a(t_stacks *s)
  */
 int	swap_b(t_stacks *s)
 {
-	int	tmp;
-
 	write(1, "sb\n", 3);
 	if (!s->b || !s->b->next)
 		return (false);
-	tmp = s->b->next->value;
-	s->b->next->value = s->b->value;
-	s->b->value = tmp;
+	swap(&s->b, &s->last_b);
 	return (true);
 }
 
@@ -57,18 +64,31 @@ int	swap_b(t_stacks *s)
  */
 int	swap_both(t_stacks *s)
 {
-	int	tmp;
-
 	write(1, "ss\n", 3);
-	if (! s->a || !s->a->next)
+	if (!s->a || !s->a->next)
 		return (false);
-	tmp = s->a->next->value;
-	s->a->next->value = s->a->value;
-	s->a->value = tmp;
-	if (! s->b || !s->b->next)
+	swap(&s->a, &s->last_a);
+	if (!s->b || !s->b->next)
 		return (false);
-	tmp = s->b->next->value;
-	s->b->next->value = s->b->value;
-	s->b->value = tmp;
+	swap(&s->b, &s->last_b);
 	return (true);
 }
+
+// int	swap_a(t_stacks *s)
+// {
+// 	// t_stack	*next;
+
+// 	write(1, "sa\n", 3);
+// 	if (!s->a || !s->a->next)
+// 		return (false);
+// 	swap(&s->a, &s->last_a);
+// 	// if (s->last_a == s->a->next)
+// 	// 	s->last_a = s->a;
+// 	// next = s->a->next;
+// 	// s->a->next = next->next;
+// 	// next->next = s->a;
+// 	// next->next->prev = next;
+// 	// s->a = next;
+// 	// s->a->prev = NULL;
+// 	return (true);
+// }
