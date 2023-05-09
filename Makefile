@@ -6,7 +6,7 @@
 #    By: jbouma <jbouma@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 14:09:40 by jbouma        #+#    #+#                  #
-#    Updated: 2023/05/08 18:01:23 by jbouma        ########   odam.nl          #
+#    Updated: 2023/05/09 11:59:58 by jensbouma     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,13 @@ SRCDIR		= 	src
 FILES		= 	main.c		\
 				input.c		\
 				stack.c		\
-				error.c		\
+				debug.c		\
 				memory.c	\
 				swap.c		\
 				push.c		\
 				rotate.c	\
 				rrotate.c	\
-				# list.c		\
+				sort.c		\
 
 SOURCES		=	${addprefix $(SRCDIR)/, $(FILES)}
 

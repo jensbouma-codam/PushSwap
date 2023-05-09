@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   sort.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/24 17:50:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 12:46:01 by jensbouma     ########   odam.nl         */
+/*   Created: 2023/05/09 12:00:05 by jensbouma     #+#    #+#                 */
+/*   Updated: 2023/05/09 12:47:43 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdarg.h>
 
-int	main(int argc, char **argv)
+void	sort(t_stacks **s)
 {
-	t_stacks	*s;
+	int	i;
 
-	s = (t_stacks *)safe_calloc(1, sizeof(*s));
-	handle_arguments(&s, argc, argv);
-	sort(&s);
-	debug(s);
-	clear_stacks(s);
+	i = 0;
 	if (DEBUG)
-		system("leaks push_swap");
-	return (EXIT_SUCCESS);
+		ft_printf("Sorting %p\n", (*s)->a);
+	while (i)
+	{
+		if ((*s)->a->value > i)
+		{
+			rotate_a((*s));
+			i++;
+		}
+		else
+		{
+			push_ab((*s));
+			i++;
+		}
+	}
+	return ;
 }
