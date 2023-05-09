@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:14:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/08 18:30:46 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/09 08:59:30 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ static void print_stack(t_stack *stack)
 {
 	while (stack)
 	{
+		if (stack->prev)
+			ft_printf("Prev = %i Pointer = %p\t", stack->prev->value, stack->prev);
+		else
+			ft_printf("Prev = NULL\t\t\t");
 		ft_printf("Value = %i \tPointer = %p\t", stack->value, stack);
 		if (stack->next)
-			ft_printf("Next = %i Pointer = %p\t", stack->next->value, stack->next);
+			ft_printf("Next = %i Pointer = %p\n", stack->next->value, stack->next);
 		else
-			ft_printf("Next = NULL");
-		if (stack->prev)
-			ft_printf("Prev = %i Pointer = %p\n", stack->prev->value, stack->prev);
-		else
-			ft_printf("Prev = NULL\n");
+			ft_printf("Next = NULL\n");
 		stack = stack->next;
 	}
 }

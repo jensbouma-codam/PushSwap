@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:57:49 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/08 16:05:37 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/09 09:03:16 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	swap_a(t_stacks *s)
 	int	tmp;
 
 	write(1, "sa\n", 3);
-	if (!s->a->next)
+	if (!s->a || !s->a->next)
 		return (false);
 	tmp = s->a->next->value;
 	s->a->next->value = s->a->value;
@@ -42,7 +42,7 @@ int	swap_b(t_stacks *s)
 	int	tmp;
 
 	write(1, "sb\n", 3);
-	if (!s->b->next)
+	if (!s->b || !s->b->next)
 		return (false);
 	tmp = s->b->next->value;
 	s->b->next->value = s->b->value;
@@ -60,12 +60,12 @@ int	swap_both(t_stacks *s)
 	int	tmp;
 
 	write(1, "ss\n", 3);
-	if (!s->a->next)
+	if (! s->a || !s->a->next)
 		return (false);
 	tmp = s->a->next->value;
 	s->a->next->value = s->a->value;
 	s->a->value = tmp;
-	if (!s->b->next)
+	if (! s->b || !s->b->next)
 		return (false);
 	tmp = s->b->next->value;
 	s->b->next->value = s->b->value;
