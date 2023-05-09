@@ -6,51 +6,32 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/28 18:12:50 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 10:38:23 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 11:16:58 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_stack **a, t_stack **b, t_stack **last_a, t_stack **last_b)
+static void	push(t_stack **f, t_stack **t, t_stack **last_f, t_stack **last_t)
 {
 	t_stack	*next;
 
-	if (!(*b))
+	if (!(*t))
 	{
 		next = NULL;
-		*last_b = *a;
+		*last_t = *f;
 	}
 	else
-		next = *b;
-	if (!(*a)->next)
-		*last_a = NULL;
-	*b = *a;
-	*a = (*a)->next;
-	if (*a)
-		(*a)->prev = NULL;
-	(*b)->next = next;
-	if ((*b)->next)
-		(*b)->next->prev = *b;
-}
-
-
-/**
- * @brief Take the first element at the top of b and put it at the top of a.
- * Do nothing if b is empty.
- * 
- * @param t_stacks s 
- * @return int 
- */
-int	push_ba(t_stacks *s)
-{
-	write(1, "pb\n", 3);
-	if (!s->b)
-		return (false);
-	push(&s->b, &s->a, &s->last_b, &s->last_a);
-	s->size_b--;
-	s->size_a++;
-	return (true);
+		next = *t;
+	if (!(*f)->next)
+		*last_f = NULL;
+	*t = *f;
+	*f = (*f)->next;
+	if (*f)
+		(*f)->prev = NULL;
+	(*t)->next = next;
+	if ((*t)->next)
+		(*t)->next->prev = *t;
 }
 
 /**
@@ -70,8 +51,24 @@ int	push_ab(t_stacks *s)
 	s->size_b++;
 	return (true);
 }
-
-
+ 
+/**
+ * @brief Take the first element at the top of b and put it at the top of a.
+ * Do nothing if b is empty.
+ * 
+ * @param t_stacks s 
+ * @return int 
+ */
+int	push_ba(t_stacks *s)
+{
+	write(1, "pb\n", 3);
+	if (!s->b)
+		return (false);
+	push(&s->b, &s->a, &s->last_b, &s->last_a);
+	s->size_b--;
+	s->size_a++;
+	return (true);
+}
 
 // /**
 //  * @brief Take the first element at the top of b and put it at the top of a.

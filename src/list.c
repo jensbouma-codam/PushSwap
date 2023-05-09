@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 23:14:57 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/08 14:47:09 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/09 11:29:03 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 // 	node = (t_stack *)safe_calloc(1, sizeof(*node));
 // 	if (!node)
-// 		error_exit("Memory allocation failed");
+// 		exit_error("Memory allocation failed");
 // 	node->value = value;
 // 	node->next = 0;
 // 	return (node);
@@ -52,7 +52,7 @@
 // 	while (lst)
 // 	{
 // 		if (n == *lst->value)
-// 			error_exit("Double value detected");
+// 			exit_error("Double value detected");
 // 		lst = lst->next;
 // 	}
 // }

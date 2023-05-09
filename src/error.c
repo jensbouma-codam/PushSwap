@@ -6,14 +6,14 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:14:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 10:28:40 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 11:31:58 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "colors.h"
 
-void	error_exit(char *msg)
+void	exit_error(char *msg)
 {
 	if (DEBUG)
 		ft_printf("%sERROR\t%s%s\n", RED, msg, NORMAL);

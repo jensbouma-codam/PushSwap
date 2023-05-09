@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:50:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 10:45:37 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 11:36:27 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,8 @@ int	main(int argc, char **argv)
 	s = (t_stacks *)safe_calloc(1, sizeof(*s));
 	if (argc > 1)
 	{
-		s->a = initialize_stack(argc, argv);
-		s->last_a = stack_last(s->a);
-		s->size_a = stack_size(s->a);
-		// s->b = add(s->b, 100);
-		// s->b = add(s->b, 101);
-		// s->b = add(s->b, 102);
-		// s->b = add(s->b, 103);
-		s->last_b = stack_last(s->b);
-		s->size_b = stack_size(s->b);
+		initialize_stack(&s, argc, argv);
+		
 		// push_ab(s);
 		// // push_ab(s);
 		// push_ab(s);
@@ -79,8 +72,8 @@ int	main(int argc, char **argv)
 		// rotate_both(s);
 		// rotate_both(s);
 		// rotate_both(s);
-		rotate_a(s);
-		rrotate_a(s);
+		rrotate_both(s);
+		// rrotate_a(s);
 		// rrotate_a(s);
 		// rrotate_a(s);
 		// rrotate_a(s);
@@ -95,12 +88,12 @@ int	main(int argc, char **argv)
 		// push_ba(s);
 
 		debug(s);
-		// clear_stacks(s);
+		clear_stacks(s);
 		if (DEBUG)
 			system("leaks push_swap");
 		return (EXIT_SUCCESS);
 	}
 	if (DEBUG)
 		system("leaks push_swap");
-	error_exit("No arguments given");
+	exit_error("No arguments given");
 }

@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:57:49 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 10:46:19 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 11:14:48 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	swap(t_stack **stack, t_stack **last)
 {
 	t_stack	*next;
 
+	if (!(*stack) || !(*stack)->next)
+		return ;
 	if ((*last) == (*stack)->next)
 		(*last) = (*stack);
 	next = (*stack)->next;
@@ -35,8 +37,6 @@ static void	swap(t_stack **stack, t_stack **last)
 int	swap_a(t_stacks *s)
 {
 	write(1, "sa\n", 3);
-	if (!s->a || !s->a->next)
-		return (false);
 	swap(&s->a, &s->last_a);
 	return (true);
 }
@@ -51,8 +51,6 @@ int	swap_a(t_stacks *s)
 int	swap_b(t_stacks *s)
 {
 	write(1, "sb\n", 3);
-	if (!s->b || !s->b->next)
-		return (false);
 	swap(&s->b, &s->last_b);
 	return (true);
 }
@@ -65,11 +63,7 @@ int	swap_b(t_stacks *s)
 int	swap_both(t_stacks *s)
 {
 	write(1, "ss\n", 3);
-	if (!s->a || !s->a->next)
-		return (false);
 	swap(&s->a, &s->last_a);
-	if (!s->b || !s->b->next)
-		return (false);
 	swap(&s->b, &s->last_b);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 00:19:50 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/08 16:44:17 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/09 11:32:22 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*safe_calloc(size_t count, size_t size)
 	if (DEBUG)
 		ft_printf("%sAllocation of %i bytes failed after 10 tries%s\n",
 			RED, (int)size * count, NORMAL);
-	error_exit("Memmory allocation failed, Buy a new computer!");
+	exit_error("Memmory allocation failed, Buy a new computer!");
 	return (NULL);
 }
 

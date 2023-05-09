@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:52:15 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/08 16:40:12 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/09 11:29:03 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ typedef struct s_stacks
 }			t_stacks;
 
 // error_handler.c
-void	error_exit(char *msg);
+void	exit_error(char *msg);
 void	debug(t_stacks *s);
 
 // input.c
 // t_stack	*initialize_stack(int argc, char **argv);
-t_stack	*initialize_stack(int argc, char **argv);
+// t_stack	*initialize_stack(int argc, char **argv);
+t_stack	*initialize_stack(t_stacks **s, int argc, char **argv);
 // t_stack	*initialize_stack(t_stack stack, int argc, char **argv);
 
 // memory.c

@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 14:41:01 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/08 15:17:45 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/09 11:29:03 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_atoi_protect_maxint(char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		if (calc * 10 + (*str - '0') > INT_MAX)
-			error_exit("Value outside range of INT_MAX");
+			exit_error("Value outside range of INT_MAX");
 		calc = calc * 10 + (*str - '0');
 		str++;
 	}
@@ -42,19 +42,20 @@ static void	check_duplicates(t_stack *stack, int value)
 	while (stack)
 	{
 		if (value == stack->value)
-			error_exit("Double value detected");
+			exit_error("Double value detected");
 		stack = stack->next;
 	}
 }
 
-t_stack	*initialize_stack(int argc, char **argv)
+t_stack	*initialize_stack(t_stacks **s, int argc, char **argv)
 {
-	t_stack	*stack;
+	// t_stack	*stack;
 	int		stack_length;
 	int		i;
 	int		n;
 
-	stack = NULL;
+	// stack = NULL;
+	(*s)->a = NULL;
 	stack_length = 0;
 	while (stack_length < argc - 1)
 	{
@@ -64,12 +65,16 @@ t_stack	*initialize_stack(int argc, char **argv)
 			if (!ft_isdigit(argv[stack_length][i++]))
 				if (!(argv[stack_length][0] == '-'
 					&& ft_isdigit(argv[stack_length][i])))
-					error_exit("Value isn't a number");
+					exit_error("Value isn't a number");
 		if (argv[stack_length][0] == 0)
-			error_exit("Empty value");
+			exit_error("Empty value");
 		n = ft_atoi_protect_maxint(argv[stack_length]);
-		check_duplicates(stack, n);
-		stack = add(stack, n);
+		// check_duplicates(stack, n);
+		check_duplicates((*s)->a, n);
+		(*s)->a = add((*s)->a, n);
+		// stack = add(stack, n);
+		(*s)->size_a++;
 	}
-	return (stack);
+	(*s)->last_a = stack_last((*s)->a);
+	return ((*s)->a);
 }

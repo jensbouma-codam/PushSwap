@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 12:04:50 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/08 17:21:16 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/09 11:29:03 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_stack	*add(t_stack *stack, int value)
 
 	node = (t_stack *)safe_calloc(1, sizeof(*node));
 	if (!node)
-		error_exit("Memory allocation failed");
+		exit_error("Memory allocation failed");
 	node->value = value;
 	node->next = 0;
 	if (!stack)
@@ -54,7 +54,7 @@ t_stack	*add(t_stack *stack, int value)
 
 // 	node = (t_stack *)safe_calloc(1, sizeof(*node));
 // 	if (!node)
-// 		error_exit("Memory allocation failed");
+// 		exit_error("Memory allocation failed");
 // 	node->value = value;
 // 	if (stack)
 // 		node->next = stack;
