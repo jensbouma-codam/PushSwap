@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:52:15 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 12:14:36 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 16:16:10 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef struct s_stack
 {
 	int				value;
+	int				length;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }					t_stack;
@@ -78,5 +79,5 @@ void	rrotate_b(t_stacks *s);
 void	rrotate_both(t_stacks *s);
 
 // sort.c
-void	sort(t_stacks **s);
+void	sort(t_stacks *s);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 12:04:50 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/09 12:14:31 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 19:03:16 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,22 @@
 // 		stack = stack->next;
 // 	return (len);
 // }
+
+
+
+static int	get_digits(int n)
+{
+	int	i;
+
+	i = 0;
+	while (n / 10 > 0)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
+
 
 t_stack	*stack_last(t_stack *stack)
 {
@@ -37,6 +53,7 @@ t_stack	*add(t_stack *stack, int value)
 	if (!node)
 		exit_error("Memory allocation failed");
 	node->value = value;
+	node->length = get_digits(value);
 	node->next = 0;
 	if (!stack)
 	{

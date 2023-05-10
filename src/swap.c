@@ -6,26 +6,51 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:57:49 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 11:58:04 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 16:56:53 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// static void	swap(t_stack **stack, t_stack **last)
+// {
+// 	t_stack	*next;
+
+// 	if (!(*stack) || !(*stack)->next)
+// 		return ;
+// 	if ((*last) == (*stack)->next)
+// 		(*last) = (*stack);
+	
+// 	next = (*stack)->next;
+	
+// 	(*stack)->next = next->next;
+	
+// 	next->next = *stack;
+// 	next->next->prev = next;
+
+// 	(*stack) = next;
+// 	(*stack)->prev = NULL;
+// }
+
 static void	swap(t_stack **stack, t_stack **last)
 {
-	t_stack	*next;
+	t_stack	*first;
 
 	if (!(*stack) || !(*stack)->next)
 		return ;
 	if ((*last) == (*stack)->next)
 		(*last) = (*stack);
-	next = (*stack)->next;
-	(*stack)->next = next->next;
-	next->next = *stack;
-	next->next->prev = next;
-	(*stack) = next;
+
+	first = (*stack);
+
+	(*stack) = (*stack)->next;
 	(*stack)->prev = NULL;
+
+	first->next = (*stack)->next;
+	first->next->prev = first;
+	(*stack)->next = first;
+	(*stack)->next->prev = (*stack);
+
 }
 
 /**
@@ -57,3 +82,22 @@ void	swap_both(t_stacks *s)
 	swap(&s->a, &s->last_a);
 	swap(&s->b, &s->last_b);
 }
+
+// int	swap_a(t_stacks *s)
+// {
+// 	// t_stack	*next;
+
+// 	write(1, "sa\n", 3);
+// 	if (!s->a || !s->a->next)
+// 		return (false);
+// 	swap(&s->a, &s->last_a);
+// 	// if (s->last_a == s->a->next)
+// 	// 	s->last_a = s->a;
+// 	// next = s->a->next;
+// 	// s->a->next = next->next;
+// 	// next->next = s->a;
+// 	// next->next->prev = next;
+// 	// s->a = next;
+// 	// s->a->prev = NULL;
+// 	return (true);
+// }

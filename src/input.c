@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 14:41:01 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/09 11:44:19 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/09 13:52:21 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	handle_arguments(t_stacks **s, int argc, char **argv)
 		n = ft_atoi_protect_maxint(argv[stack_length]);
 		check_duplicates((*s)->a, n);
 		(*s)->a = add((*s)->a, n);
-		(*s)->size_a++;
+		++(*s)->size_a;
 	}
 	(*s)->last_a = stack_last((*s)->a);
 }
