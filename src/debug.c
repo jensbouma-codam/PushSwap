@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   error.c                                            :+:    :+:            */
+/*   debug.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:14:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 11:55:24 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/10 09:59:50 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	exit_error(char *msg)
 	if (DEBUG)
 		ft_printf("%sERROR\t%s%s\n", RED, msg, NORMAL);
 	write(STDERR_FILENO, "Error\n", 6);
+	if (DEBUG > 2)
+		system("leaks push_swap");
 	exit (EXIT_FAILURE);
 }
 

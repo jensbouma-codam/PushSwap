@@ -6,7 +6,7 @@
 #    By: jbouma <jbouma@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 14:09:40 by jbouma        #+#    #+#                  #
-#    Updated: 2023/05/09 11:59:58 by jensbouma     ########   odam.nl          #
+#    Updated: 2023/05/10 10:26:48 by jbouma        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,8 @@ NAME		=	push_swap
 
 # Compiler Settings
 CC 			:= gcc
-CFLAGS 		:= -g -Wall -Wextra -Werror
-# -fsanitize=address
-# CFLAGS		:= -Wall -Wextra -Werror -g -fsanitize=address
-
+CFLAGS 		:= -Wall -Wextra -Werror
+CFLAGS		+= -O3
 # Headers
 INC 		= -I include
 
@@ -38,6 +36,7 @@ FILES		= 	main.c		\
 				rotate.c	\
 				rrotate.c	\
 				sort.c		\
+				utils.c		\
 
 SOURCES		=	${addprefix $(SRCDIR)/, $(FILES)}
 
@@ -76,7 +75,7 @@ all: $(NAME)
 	@mkdir -p ./bin
 	@$(CC) $(CFLAGS) $(HEADERS) $(INC) $(OBJECTS) $(LIBARIES_AFILES) -o $(TARGET)
 	@printf "Executable \t$< \033[0K\n"
-
+	@printf "\n$(YELLOW)Compiled with flags: $(CFLAGS)\n"
 	@printf "\n🙏 $(GREEN)Complete $(RESET)\t\033[0K\n"
 
 $(BUILDDIR)%.o:%.c
@@ -96,6 +95,15 @@ $(LIBS):
 $(NAME): $(LIBS) $(OBJECTS)
 	@make norm 2> /dev/null && $(P_OK) || { $(P_KO);}
 	
+
+leaks: CFLAGS += -g -D DEBUG=3
+leaks: re
+	@printf "$(RED)Compiled in debug / leaks mode!!!$(RESET)"
+
+debug: CFLAGS += -g -fsanitize=address -D DEBUG=2
+debug: re
+	@printf "$(RED)Compiled in debug / fsanitize=adress mode!!!$(RESET)"
+
 clean:
 	@rm -rf build
 	@rm -rf $(LIBDIR)/*/*.a
@@ -109,4 +117,4 @@ re: fclean all
 norm: $(SOURCES)
 	@norminette -R CheckForbiddenSourceHeader $^ include > /dev/null && exit 0 || exit 1
 
-.PHONY: all clean fclean re
+.PHONY: CFLAGS all clean fclean re

@@ -6,14 +6,16 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:52:15 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 16:16:10 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/10 14:14:57 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define DEBUG 1
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 
 # include <stdbool.h>
 # include <limits.h>
@@ -53,11 +55,14 @@ void	handle_arguments(t_stacks **s, int argc, char **argv);
 void	*safe_calloc(size_t count, size_t size);
 void	clear_stacks(t_stacks *s);
 
+// utils.c
+int		get_int_length(int n);
+
 // stack.c
-// int		stack_size(t_stack *lst);
+int		get_stack_max(t_stack *stack);
+int	get_stack_min(t_stack *stack);
 t_stack	*stack_last(t_stack *stack);
 t_stack	*add(t_stack *stack, int value);
-t_stack	*addtop(t_stack *stack, int value);
 
 // swap.c
 void	swap_a(t_stacks *s);

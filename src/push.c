@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/28 18:12:50 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 11:57:36 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/10 14:38:57 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static bool	push(t_stack **f, t_stack **t, t_stack **last_f, t_stack **last_t)
  */
 void	push_ab(t_stacks *s)
 {
-	write(1, "pb\n", 3);
+	write(1, "pa\n", 3);
 	if (push(&s->a, &s->b, &s->last_a, &s->last_b))
 	{
 		s->size_a--;

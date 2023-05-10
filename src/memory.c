@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 00:19:50 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/09 12:47:18 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/10 12:12:51 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	*safe_calloc(size_t count, size_t size)
 			if (DEBUG)
 				ft_printf("%sAllocation of %i MB failed after 10 tries%s\n",
 					RED, (size * count + 1) / 1024 / 1024, NORMAL);
-			exit_error("Memmory allocation failed, Buy a new computer!");
+			exit_error("Memmory allocation failed, \
+				Buy a new computer or make a better program!");
 		}
 	}
 	ft_bzero(ptr, size * count);
@@ -57,5 +58,7 @@ void	clear_stacks(t_stacks *s)
 		s->b = s->b->next;
 		free(tmp);
 	}
+	if (DEBUG > 1)
+		ft_printf("freeing %p\n", s);
 	free(s);
 }

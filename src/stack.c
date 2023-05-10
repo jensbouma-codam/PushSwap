@@ -6,37 +6,40 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 12:04:50 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/09 19:03:16 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/10 14:14:48 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int	stack_size(t_stack *stack)
-// {
-// 	int		len;
-
-// 	len = 0;
-// 	while (stack && ++len)
-// 		stack = stack->next;
-// 	return (len);
-// }
-
-
-
-static int	get_digits(int n)
+int	get_stack_max(t_stack *stack)
 {
-	int	i;
+	int	max;
 
-	i = 0;
-	while (n / 10 > 0)
+	max = stack->value;
+	while (stack && stack->value)
 	{
-		n /= 10;
-		i++;
+		if (stack->value > max)
+			max = stack->value;
+		stack = stack->next;
 	}
-	return (i);
+	return (max);
 }
 
+
+int	get_stack_min(t_stack *stack)
+{
+	int	min;
+
+	min = stack->value;
+	while (stack && stack->value)
+	{
+		if (stack->value < min)
+			min = stack->value;
+		stack = stack->next;
+	}
+	return (min);
+}
 
 t_stack	*stack_last(t_stack *stack)
 {
@@ -53,7 +56,7 @@ t_stack	*add(t_stack *stack, int value)
 	if (!node)
 		exit_error("Memory allocation failed");
 	node->value = value;
-	node->length = get_digits(value);
+	node->length = get_int_length(value);
 	node->next = 0;
 	if (!stack)
 	{
