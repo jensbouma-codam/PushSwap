@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:52:15 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/10 14:14:57 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/11 18:36:00 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@ typedef struct s_stacks
 {
 	t_stack	*a;
 	t_stack	*last_a;
-	int		size_a;
+	int		len_stack_a;
 
 	t_stack	*b;
 	t_stack	*last_b;
-	int		size_b;
+	int		len_stack_b;
 }			t_stacks;
 
 // debug.c
+int		actions;
 void	exit_error(char *msg);
 void	debug(t_stacks *s);
 
@@ -57,12 +58,13 @@ void	clear_stacks(t_stacks *s);
 
 // utils.c
 int		get_int_length(int n);
+int		bit_value(long n, int x);
 
 // stack.c
 int		get_stack_max(t_stack *stack);
-int	get_stack_min(t_stack *stack);
+int		get_stack_min(t_stack *stack);
 t_stack	*stack_last(t_stack *stack);
-t_stack	*add(t_stack *stack, int value);
+t_stack	*add(t_stack *stack, long value);
 
 // swap.c
 void	swap_a(t_stacks *s);

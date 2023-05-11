@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:57:49 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/10 12:09:33 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/11 17:28:49 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void	swap(t_stack **stack, t_stack **last)
 void	swap_a(t_stacks *s)
 {
 	write(1, "sa\n", 3);
+	actions++;
 	swap(&s->a, &s->last_a);
 }
 
@@ -46,7 +47,8 @@ void	swap_a(t_stacks *s)
  */
 void	swap_b(t_stacks *s)
 {
-	write(1, "sb\n", 3);
+	write(1, "sa\n", 3);
+	actions++;
 	swap(&s->b, &s->last_b);
 }
 

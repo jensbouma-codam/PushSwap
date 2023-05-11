@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 16:05:45 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/09 11:57:20 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/11 17:29:22 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	rotate(t_stack **stack, t_stack **last)
 void	rotate_a(t_stacks *s)
 {
 	write(1, "ra\n", 3);
+	actions++;
 	rotate(&s->a, &s->last_a);
 }
 
@@ -48,6 +49,7 @@ void	rotate_a(t_stacks *s)
 void	rotate_b(t_stacks *s)
 {
 	write(1, "rb\n", 3);
+	actions++;
 	rotate(&s->b, &s->last_b);
 }
 
@@ -59,6 +61,7 @@ void	rotate_b(t_stacks *s)
 void	rotate_both(t_stacks *s)
 {
 	write(1, "rr\n", 3);
+	actions++;
 	rotate(&s->a, &s->last_a);
 	rotate(&s->b, &s->last_b);
 }

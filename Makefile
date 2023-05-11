@@ -6,7 +6,7 @@
 #    By: jbouma <jbouma@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 14:09:40 by jbouma        #+#    #+#                  #
-#    Updated: 2023/05/10 10:26:48 by jbouma        ########   odam.nl          #
+#    Updated: 2023/05/11 17:55:11 by jensbouma     ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ leaks: CFLAGS += -g -D DEBUG=3
 leaks: re
 	@printf "$(RED)Compiled in debug / leaks mode!!!$(RESET)"
 
-debug: CFLAGS += -g -fsanitize=address -D DEBUG=2
+debug: CFLAGS += -g -fsanitize=address -D DEBUG=1
 debug: re
 	@printf "$(RED)Compiled in debug / fsanitize=adress mode!!!$(RESET)"
 

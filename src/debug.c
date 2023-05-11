@@ -6,12 +6,14 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:14:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/10 09:59:50 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/11 18:35:44 by jensbouma     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "colors.h"
+
+int actions = 0;
 
 void	exit_error(char *msg)
 {
@@ -47,12 +49,14 @@ void	debug(t_stacks *s)
 {
 	if (!DEBUG)
 		return ;
-	ft_printf("\nA Len: %i\n\n", s->size_a);
+	ft_printf("\nA Len: %i\n\n", s->len_stack_a);
 	print_stack(s->a);
 	if (s->last_a)
 		ft_printf("last A: %i %p\n", s->last_a->value, s->last_a);
-	ft_printf("\nB Len: %i\n\n", s->size_b);
+	ft_printf("\nB Len: %i\n\n", s->len_stack_b);
 	print_stack(s->b);
 	if (s->last_b)
 		ft_printf("last B: %i %p\n", s->last_b->value, s->last_b);
+
+	ft_printf("Actions = %i\n", actions);
 }
