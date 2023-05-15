@@ -1,3 +1,6 @@
 [submodule "lib/LibFT"]
 	path = lib/LibFT
 	url = https://github.com/jensbouma/Codam-LibFT.git
+[submodule "tests/push_swap_visualizer"]
+	path = tests/push_swap_visualizer
+	url = https://github.com/o-reo/push_swap_visualizer.git
