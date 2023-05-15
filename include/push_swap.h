@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:52:15 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/15 16:15:53 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/15 17:30:10 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 typedef struct s_stack
 {
 	int				value;
-	int				index;
+	unsigned int	index;
 	int				length;
 	struct s_stack	*prev;
 	struct s_stack	*next;

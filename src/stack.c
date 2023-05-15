@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 12:04:50 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/15 14:06:37 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/15 17:31:50 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	add_index(t_stack *s)
 {
 	const int	min = get_stack_min(s);
 
-	while (s && s->value)
+	while (s)
 	{
 		s->index = s->value - min;
 		s = s->next;

@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/09 12:00:05 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/15 16:32:42 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/15 17:57:55 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ static void	radix_sort(t_stacks *s)
 	while (i--)
 	{
 		if (bit_value(s->b->index, x) == 1
-			|| x > (int)(sizeof(s->b->index) << 3))
+			|| x > (int)(sizeof(s->b->index) << 3) ||
+			is_rev_sorted(s->b))
 			push_ba(s);
 		else if (!is_rev_sorted(s->b))
 			rotate_b(s);
