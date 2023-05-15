@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 12:04:50 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/11 18:19:53 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/15 14:06:37 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	get_stack_max(t_stack *stack)
 {
 	int	max;
 
-	max = 0;
+	max = INT_MIN;
 	while (stack && stack->value)
 	{
 		if (stack->value > max)
@@ -26,12 +26,11 @@ int	get_stack_max(t_stack *stack)
 	return (max);
 }
 
-
 int	get_stack_min(t_stack *stack)
 {
 	int	min;
 
-	min = 0;
+	min = INT_MAX;
 	while (stack && stack->value)
 	{
 		if (stack->value < min)
@@ -46,6 +45,17 @@ t_stack	*stack_last(t_stack *stack)
 	while (stack && stack->next)
 		stack = stack->next;
 	return (stack);
+}
+
+void	add_index(t_stack *s)
+{
+	const int	min = get_stack_min(s);
+
+	while (s && s->value)
+	{
+		s->index = s->value - min;
+		s = s->next;
+	}
 }
 
 t_stack	*add(t_stack *stack, long value)

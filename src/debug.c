@@ -6,14 +6,12 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 18:14:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/11 18:35:44 by jensbouma     ########   odam.nl         */
+/*   Updated: 2023/05/15 16:16:21 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "colors.h"
-
-int actions = 0;
 
 void	exit_error(char *msg)
 {
@@ -57,6 +55,4 @@ void	debug(t_stacks *s)
 	print_stack(s->b);
 	if (s->last_b)
 		ft_printf("last B: %i %p\n", s->last_b->value, s->last_b);
-
-	ft_printf("Actions = %i\n", actions);
 }
