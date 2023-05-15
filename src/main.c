@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:50:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/15 15:54:52 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/15 17:22:26 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ int	main(int argc, char **argv)
 	clear_stacks(s);
 	if (DEBUG > 2)
 		system("leaks push_swap");
-	write(1, "OK\n", 3);
 	return (EXIT_SUCCESS);
 }

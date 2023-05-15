@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 00:19:50 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/10 12:12:51 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/15 17:23:08 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,16 @@
 
 void	*safe_calloc(size_t count, size_t size)
 {
-	int		tries;
 	void	*ptr;
 
-	tries = 0;
-	while (true)
+	ptr = malloc(size * count + 1);
+	if (!ptr)
 	{
-		ptr = malloc(size * count + 1);
-		if (ptr)
-			break ;
-		if (tries++ == 9)
-		{
-			if (DEBUG)
-				ft_printf("%sAllocation of %i MB failed after 10 tries%s\n",
-					RED, (size * count + 1) / 1024 / 1024, NORMAL);
-			exit_error("Memmory allocation failed, \
-				Buy a new computer or make a better program!");
-		}
+		if (DEBUG)
+			ft_printf("%sAllocation of %i MB failed after 10 tries%s\n",
+				RED, (size * count + 1) / 1024 / 1024, NORMAL);
+		exit_error("Memmory allocation failed, \
+			Buy a new computer or make a better program!");
 	}
 	ft_bzero(ptr, size * count);
 	return (ptr);
