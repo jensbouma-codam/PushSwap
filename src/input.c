@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 14:41:01 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/15 17:50:05 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/17 16:11:21 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,3 +77,9 @@ void	handle_arguments(t_stacks **s, int argc, char **argv)
 	}
 	(*s)->last_a = stack_last((*s)->a);
 }
+
+// What if there are multiple '-'? 
+// What if 2nd number 
+//leading 0000???  
+// Doe eens een string handlene ook!
+//  1 2 3 4 5 0 ->>> WTF is er met 0?
