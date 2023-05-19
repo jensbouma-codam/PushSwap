@@ -6,35 +6,35 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 12:04:50 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/17 16:31:28 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/19 17:14:00 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_stack_max(t_stack *stack)
+unsigned int	get_stack_max(t_stack *stack)
 {
-	int	max;
+	unsigned int	max;
 
 	max = INT_MIN;
 	while (stack)
 	{
-		if (stack->value > max)
-			max = stack->value;
+		if (stack->index > max)
+			max = stack->index;
 		stack = stack->next;
 	}
 	return (max);
 }
 
-int	get_stack_min(t_stack *stack)
+unsigned int	get_stack_min(t_stack *stack)
 {
-	int	min;
+	unsigned int	min;
 
 	min = INT_MAX;
 	while (stack)
 	{
-		if (stack->value < min)
-			min = stack->value;
+		if (stack->index < min)
+			min = stack->index;
 		stack = stack->next;
 	}
 	return (min);

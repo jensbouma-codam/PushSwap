@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/09 12:00:05 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/15 17:57:55 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/19 17:15:42 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static void	sort_four_five(t_stacks *s)
 {
 	while (!is_sorted(s->a) || s->len_stack_b)
 	{
-		if (s->a->value == get_stack_max(s->a)
-			|| s->a->value == get_stack_min(s->a))
+		if (s->a->index == get_stack_max(s->a)
+			|| s->a->index == get_stack_min(s->a))
 			push_ab(s);
 		if (s->len_stack_a == 3)
 		{

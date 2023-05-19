@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:50:29 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/19 13:23:05 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/19 17:18:01 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	main(int argc, char **argv)
 	t_stacks	*s;
 	int			i;
 
-	s = (t_stacks *)safe_calloc(1, sizeof(*s));
-	i = 0;
 	if (argc >= ARG_MAX)
 		exit_error("Too many arguments");
 	if (argc <= 1)
-		exit_error("No arguments given");
+		return (EXIT_SUCCESS);
+	i = 0;
+	s = (t_stacks *)safe_calloc(1, sizeof(*s));
 	if (argc == 2)
 		handle_arguments(&s, ft_split(argv[1], ' '), true);
 	else

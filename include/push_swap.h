@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:52:15 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/19 13:57:38 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/19 17:15:10 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,49 +46,49 @@ typedef struct s_stacks
 }			t_stacks;
 
 // debug.c
-void	exit_error(char *msg);
-void	debug(t_stacks *s);
+void			exit_error(char *msg);
+void			debug(t_stacks *s);
 
 // input.c
-void	handle_arguments(t_stacks **s, char **argv, bool dofree);
+void			handle_arguments(t_stacks **s, char **argv, bool dofree);
 
 // memory.c
-void	*safe_calloc(size_t count, size_t size);
-void	clear_stacks(t_stacks *s);
+void			*safe_calloc(size_t count, size_t size);
+void			clear_stacks(t_stacks *s);
 
 // utils.c
-int		get_int_length(int n);
-int		bit_value(long n, int x);
-bool	is_sorted(t_stack *stack);
-bool	is_rev_sorted(t_stack *stack);
-void	free_array(char **array);
+int				get_int_length(int n);
+int				bit_value(long n, int x);
+bool			is_sorted(t_stack *stack);
+bool			is_rev_sorted(t_stack *stack);
+void			free_array(char **array);
 
 // stack.c
-int		get_stack_max(t_stack *stack);
-int		get_stack_min(t_stack *stack);
-t_stack	*stack_last(t_stack *stack);
-void	add_index(t_stack *s);
-t_stack	*add(t_stack *stack, long value);
+unsigned int	get_stack_max(t_stack *stack);
+unsigned int	get_stack_min(t_stack *stack);
+t_stack			*stack_last(t_stack *stack);
+void			add_index(t_stack *s);
+t_stack			*add(t_stack *stack, long value);
 
 // swap.c
-void	swap_a(t_stacks *s);
-void	swap_b(t_stacks *s);
-void	swap_both(t_stacks *s);
+void			swap_a(t_stacks *s);
+void			swap_b(t_stacks *s);
+void			swap_both(t_stacks *s);
 
 // push.c
-void	push_ba(t_stacks *s);
-void	push_ab(t_stacks *s);
+void			push_ba(t_stacks *s);
+void			push_ab(t_stacks *s);
 
 // rotate.c
-void	rotate_a(t_stacks *s);
-void	rotate_b(t_stacks *s);
-void	rotate_both(t_stacks *s);
+void			rotate_a(t_stacks *s);
+void			rotate_b(t_stacks *s);
+void			rotate_both(t_stacks *s);
 
 // rrotate.c
-void	rrotate_a(t_stacks *s);
-void	rrotate_b(t_stacks *s);
-void	rrotate_both(t_stacks *s);
+void			rrotate_a(t_stacks *s);
+void			rrotate_b(t_stacks *s);
+void			rrotate_both(t_stacks *s);
 
 // sort.c
-void	sort(t_stacks *s);
+void			sort(t_stacks *s);
 #endif
