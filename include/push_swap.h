@@ -6,7 +6,7 @@
 /*   By: jensbouma <jensbouma@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 17:52:15 by jensbouma     #+#    #+#                 */
-/*   Updated: 2023/05/15 17:30:10 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/19 13:57:38 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	exit_error(char *msg);
 void	debug(t_stacks *s);
 
 // input.c
-void	handle_arguments(t_stacks **s, int argc, char **argv);
+void	handle_arguments(t_stacks **s, char **argv, bool dofree);
 
 // memory.c
 void	*safe_calloc(size_t count, size_t size);
@@ -61,6 +61,7 @@ int		get_int_length(int n);
 int		bit_value(long n, int x);
 bool	is_sorted(t_stack *stack);
 bool	is_rev_sorted(t_stack *stack);
+void	free_array(char **array);
 
 // stack.c
 int		get_stack_max(t_stack *stack);

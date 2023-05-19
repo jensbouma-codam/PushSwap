@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/10 09:35:31 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/15 17:55:43 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/19 13:28:53 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,17 @@ bool	is_rev_sorted(t_stack *stack)
 	if (DEBUG)
 		ft_printf("Stack is rev sorted\n");
 	return (true);
+}
+
+void	free_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }

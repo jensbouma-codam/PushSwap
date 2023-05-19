@@ -6,7 +6,7 @@
 /*   By: jbouma <jbouma@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/08 14:41:01 by jbouma        #+#    #+#                 */
-/*   Updated: 2023/05/17 16:11:21 by jbouma        ########   odam.nl         */
+/*   Updated: 2023/05/19 13:28:02 by jbouma        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,37 +49,31 @@ static void	check_duplicates(t_stack *stack, int value)
 	}
 }
 
-void	handle_arguments(t_stacks **s, int argc, char **argv)
+void	handle_arguments(t_stacks **s, char **argv, bool dofree)
 {
 	int		stack_length;
 	int		i;
 	int		n;
 
-	if (argc <= 1)
-		exit_error("No arguments given");
 	(*s)->a = NULL;
 	stack_length = 0;
-	while (stack_length < argc - 1)
+	while (argv[stack_length])
 	{
-		stack_length++;
 		i = 0;
 		while (argv[stack_length][i])
 			if (!ft_isdigit(argv[stack_length][i++]))
-				if (!(argv[stack_length][0] == '-'
+				if (!((argv[stack_length][0] == '-'
+						|| argv[stack_length][0] == '+')
 					&& ft_isdigit(argv[stack_length][i])))
 					exit_error("Value isn't a number");
 		if (argv[stack_length][0] == 0)
 			exit_error("Empty value");
-		n = ft_atoi_protect_maxint(argv[stack_length]);
+		n = ft_atoi_protect_maxint(argv[stack_length++]);
 		check_duplicates((*s)->a, n);
 		(*s)->a = add((*s)->a, n);
 		++(*s)->len_stack_a;
 	}
 	(*s)->last_a = stack_last((*s)->a);
+	if (dofree)
+		free_array(argv);
 }
-
-// What if there are multiple '-'? 
-// What if 2nd number 
-//leading 0000???  
-// Doe eens een string handlene ook!
-//  1 2 3 4 5 0 ->>> WTF is er met 0?
