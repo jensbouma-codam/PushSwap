@@ -2,6 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/jensbouma/Codam-PushSwap)
 ![GitHub last commit](https://img.shields.io/github/last-commit/jensbouma/Codam-PushSwap)
+[![C/C++ CI](https://github.com/jensbouma/Codam-PushSwap/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/jensbouma/Codam-PushSwap/actions/workflows/c-cpp.yml)
 
 This project is an implementation of the PushSwap sorting algorithm for the Codam curriculum. It aims to sort a stack of numbers using a limited set of operations.
 
