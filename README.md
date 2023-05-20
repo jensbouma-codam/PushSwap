@@ -62,5 +62,4 @@ Follow the [Usage](#usage) instructions to clone the repository and compile the 
 Contributions to this project are welcome. If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request on the GitHub repository.
 
 ## License
-
-This project is licensed under the [MIT License](https://github.com/jensbouma/Codam-PushSwap/LICENSE). See the LICENSE file for more details.
+This project is licensed under the [MIT License](https://github.com/jensbouma/Codam-PushSwap/blob/master/LICENSE). See the LICENSE file for more details.
